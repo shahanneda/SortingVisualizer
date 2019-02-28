@@ -6,4 +6,5 @@
  *
  */
 module sortingGraphics {
+	requires java.desktop;
 }

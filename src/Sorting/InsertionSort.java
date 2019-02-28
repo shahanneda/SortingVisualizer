@@ -1,6 +1,8 @@
 package Sorting;
 import java.util.Arrays;
 
+import Graphics.Visualizer;
+
 public class InsertionSort {
 
 	public static void main(String[] args) {
@@ -17,7 +19,7 @@ public class InsertionSort {
 		for (int i = 0; i< arr.length;i++) {
 			for(int j=i; j>0; j--) {
 				if(arr[j-1] > arr[j]) {
-					swap(arr,j-1,j); 
+					Visualizer.swap(arr,j-1,j); 
 				}else {
 					break;
 				}

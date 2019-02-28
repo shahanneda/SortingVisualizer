@@ -2,16 +2,17 @@ package Sorting;
 
 import java.util.Arrays;
 
+import Graphics.Visualizer;
+
 public class QuickSort {
-	public static void main(String[] args) {
-		int[] arr = {10,16,8,5,6,7,38,856,454,34,746,25,6969,342,456944,305,12,15,6,9,9,7,3,5,3};
-		Sort(arr);
-		System.out.println(Arrays.toString(arr));
-	}
+
 	public static void Sort(int[] arr) {
 		int[] arrwithmax = Arrays.copyOf(arr, arr.length+1);
 		arrwithmax[arr.length] = Integer.MAX_VALUE;
-		Sort(arrwithmax,0,arrwithmax.length-1);
+		
+		Visualizer.arr = arrwithmax;
+		Sort(Visualizer.arr ,0,Visualizer.arr .length-1);
+		
 		for(int i =0; i<arr.length;i++) 
 			arr[i] = arrwithmax[i];
  	}
@@ -20,6 +21,7 @@ public class QuickSort {
 			int j = placePivot(arr,l,h);
 			Sort(arr,l,j);
 			Sort(arr,j+1,h);
+			
 		}			
 	}
 	
@@ -37,15 +39,18 @@ public class QuickSort {
 				j--;
 			}while(arr[j] > pivot);
 			if(i<j)
-				swap(arr,i,j);		
+				Visualizer.swap(arr,i,j);		
 		}
-		swap(arr,l,j);
+		Visualizer.swap(arr,l,j);
 		
 		return j;
 
 		
 	}
+	
+	
 	private static void swap(int[] arr, int index1, int index2) {
+		System.out.println(Arrays.toString(arr));
 		int i = arr[index1];
 		arr[index1] = arr[index2];
 		arr[index2] = i;
