@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 import shuffling.RandomShuffle;
+import sorting.BubbleSort;
 import sorting.QuickSort;
 public class Visualizer extends Frame{
 	private static final long serialVersionUID = 1L;
@@ -25,9 +26,14 @@ public class Visualizer extends Frame{
 		}
 		
 		vis = new Visualizer();
+		RandomShuffle.Shuffle(arr);
+//		BubbleSort.Sort(arr);
+		
 		while(true) {
 			RandomShuffle.Shuffle(arr);
-			QuickSort.Sort(arr);
+//			QuickSort.Sort(arr);
+			BubbleSort.Sort(arr);
+//			
 		}
 //		vis.repaint();
 		
@@ -129,7 +135,7 @@ public class Visualizer extends Frame{
      int pagewidth= (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth();
      
      
-//     int size = 1;
+     int size = pagewidth/arr.length;
      for(int i = 1; i <arr.length+1;i++) {
     	 int green =  255 - (int)(i*0.255);
     	 Color color = new Color(255,green,0);
