@@ -1,7 +1,7 @@
-package Sorting;
+package sorting;
 import java.util.Arrays;
 
-import Graphics.Visualizer;
+import graphics.Visualizer;
 
 public class InsertionSort {
 

@@ -1,8 +1,8 @@
-package Sorting;
+package sorting;
 
 import java.util.Arrays;
 
-import Graphics.Visualizer;
+import graphics.Visualizer;
 
 public class QuickSort {
 
@@ -13,8 +13,11 @@ public class QuickSort {
 		Visualizer.arr = arrwithmax;
 		Sort(Visualizer.arr ,0,Visualizer.arr .length-1);
 		
-		for(int i =0; i<arr.length;i++) 
-			arr[i] = arrwithmax[i];
+		int[] buffer = new int[Visualizer.arr.length-1];
+		
+		for(int i =0; i<buffer.length-1;i++) 
+			buffer[i] = Visualizer.arr[i];
+		Visualizer.arr = buffer;
  	}
 	private static void Sort(int[] arr, int l, int h) {
 		if(l<h) {

@@ -1,4 +1,4 @@
-package Graphics;
+package graphics;
 
 import java.awt.*;
 import java.awt.event.WindowAdapter;
@@ -7,13 +7,14 @@ import java.awt.geom.AffineTransform;
 import java.util.Arrays;
 import java.util.Random;
 
-import Sorting.QuickSort;
+import shuffling.RandomShuffle;
+import sorting.QuickSort;
 public class Visualizer extends Frame{
 	private static final long serialVersionUID = 1L;
 	public static int[] arr = new int[1000];
 	public static final int  width = 1000;
 	public static Visualizer vis;
-	public static int speed = 10;
+	public static int speed = 100;
 	int size =width/arr.length;
 	
 	
@@ -24,9 +25,14 @@ public class Visualizer extends Frame{
 		}
 		
 		vis = new Visualizer();
-		vis.repaint();
+		while(true) {
+			RandomShuffle.Shuffle(arr);
+			QuickSort.Sort(arr);
+		}
+//		vis.repaint();
+		
 //		InsertionSort.insertionSort(arr);
-		QuickSort.Sort(arr);
+		
    }
 	
 
@@ -49,7 +55,7 @@ public class Visualizer extends Frame{
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
-		if(count %10 == 0) {
+		if(count %speed == 0) {
 			
 			try {
 				Thread.sleep(100);//TODO count every other one
