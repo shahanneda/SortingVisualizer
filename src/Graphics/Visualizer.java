@@ -10,13 +10,14 @@ import java.util.Random;
 import shuffling.RandomShuffle;
 import sorting.BubbleSort;
 import sorting.InsertionSort;
+import sorting.MergeSort;
 import sorting.QuickSort;
 public class Visualizer extends Frame{
 	private static final long serialVersionUID = 1L;
 	public static int[] arr = new int[1000];
 	public static final int  width = 1000;
 	public static Visualizer vis;
-	public static int speed = 10000;
+	public static int speed = 100;
 	int size =width/arr.length;
 	
 	static float scaler = (float)arr.length / 750f;
@@ -38,7 +39,8 @@ public class Visualizer extends Frame{
 //			QuickSort.Sort(arr);
 //			QuickSort.Sort(arr);
 //			BubbleSort.Sort(arr);
-			InsertionSort.Sort(arr);
+//			InsertionSort.Sort(arr);
+			MergeSort.Sort(arr);
 			Thread.sleep(600);
 //			BubbleSort.Sort(arr);
 //			

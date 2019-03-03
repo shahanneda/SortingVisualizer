@@ -2,10 +2,12 @@ package sorting;
 
 import java.util.Arrays;
 
+import graphics.Visualizer;
+
 public class MergeSort {
 	static int[] buf;
 	public static void main(String[] args) {
-		int[] arr = {5,6,4,5,6,3,5,6,8,9};
+		int[] arr = {5,6,4,5,5,888,43,44,55,34,345,6,3,5,6,8,9};
 		// 0 -> 9
 		// 9/2
 		// 0 , 4   -> 5 , 9
@@ -16,6 +18,9 @@ public class MergeSort {
 		Sort(arr,0,arr.length-1);
 		System.out.println(Arrays.toString(arr));
 //		System.out.println(Arrays.toString(arr));
+	}
+	public static void Sort(int[] arr) {
+		Sort(arr,0,arr.length-1);
 	}
 	public static void Sort(int[] arr, int l, int h) {
 //		int mid = l + (h-1)/2;
@@ -30,6 +35,7 @@ public class MergeSort {
 			Sort(arr,l,((l+h)/2));
 			Sort(arr,((l+h)/2)+1,h);	
 		}
+//		Visualizer.vis.repaint();
 		Merge(arr,l,((l+h)/2),((l+h)/2)+1,h);
 		
 		
@@ -39,7 +45,7 @@ public class MergeSort {
 		buf = new int[h2-l1+1];
 		int oldl = l1;
 		int length =  h2-l1+1;
-		for(int count = 0; count <length; count++ ) {
+		for(int count = 0; count < length; count++ ) {
 			if(l1 > h1) {
 				buf[count] = arr[l2];
 				l2++;
@@ -54,10 +60,14 @@ public class MergeSort {
 				buf[count] = arr[l2];
 				l2++;
 			}
+			
+			
 		}
 		for(int i = 0; i<buf.length;i++  ) {
 			arr[oldl + i] = buf[i];
+			Visualizer.swap(arr, oldl + i, oldl + i);
 		}
+		
 		return buf;
 	}
 }
