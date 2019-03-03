@@ -9,30 +9,38 @@ import java.util.Random;
 
 import shuffling.RandomShuffle;
 import sorting.BubbleSort;
+import sorting.InsertionSort;
 import sorting.QuickSort;
 public class Visualizer extends Frame{
 	private static final long serialVersionUID = 1L;
 	public static int[] arr = new int[1000];
 	public static final int  width = 1000;
 	public static Visualizer vis;
-	public static int speed = 100;
+	public static int speed = 10000;
 	int size =width/arr.length;
 	
-	
-	public static void main(String args[]) {
+	static float scaler = (float)arr.length / 750f;
+	public static void main(String args[]) throws InterruptedException  {
 		Random r = new Random();
 		for(int i =0 ; i<arr.length;i++) {
-			arr[i] = (int) (i*0.75);
+			arr[i] = (int) (i/scaler);
 		}
 		
 		vis = new Visualizer();
-		RandomShuffle.Shuffle(arr);
+//		RandomShuffle.Shuffle(arr);
 //		BubbleSort.Sort(arr);
 		
 		while(true) {
 			RandomShuffle.Shuffle(arr);
+			Thread.sleep(500);
+			
+			
 //			QuickSort.Sort(arr);
-			BubbleSort.Sort(arr);
+//			QuickSort.Sort(arr);
+//			BubbleSort.Sort(arr);
+			InsertionSort.Sort(arr);
+			Thread.sleep(600);
+//			BubbleSort.Sort(arr);
 //			
 		}
 //		vis.repaint();
@@ -49,11 +57,15 @@ public class Visualizer extends Frame{
     * the frame.
     **/
 	static int count = 0;
+	public static int current1 = 0;
+	public static int current2 = 0;
 	public static void swap(int[] arr, int index1, int index2) {
 //		System.out.printf("Swaped %s with %s\n\n", arr[index1],arr[index2]);
 		int i = arr[index1]; 
 		arr[index1] = arr[index2];
 		arr[index2] = i;
+		current1 = index1;
+		current2 = index2;
 //		paint();
 //		try {
 //			Thread.sleep(1);
@@ -138,9 +150,11 @@ public class Visualizer extends Frame{
      int size = pagewidth/arr.length;
      for(int i = 1; i <arr.length+1;i++) {
     	 int green =  255 - (int)(i*0.255);
-    	 Color color = new Color(255,green,0);
+    	 Color color = new Color(5,144,green);
+    	 if(i == current1 || i == current2)
+    		 color = Color.DARK_GRAY;
     	 g2d.setColor(color);
-    	 g2d.drawRect(size*i,1,size,arr[i-1]);
+    	 g2d.fillRect(size*i,1,size,arr[i-1]);
      }
 //     g2d.drawRect(1,1,1,100);
 //     g2d.drawRect(2,1,1,50);
